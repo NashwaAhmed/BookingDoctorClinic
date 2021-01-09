@@ -1,0 +1,5 @@
+package com.bookingDoctorSystem.service;
+
+public interface RoleService {
+
+}

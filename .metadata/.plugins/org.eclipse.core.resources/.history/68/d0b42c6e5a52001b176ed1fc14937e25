@@ -1,0 +1,8 @@
+package com.bookingDoctorSystem.controller;
+
+@Controller
+@RequestMapping("/schedule")
+public class ScheduleController
+{
+
+}

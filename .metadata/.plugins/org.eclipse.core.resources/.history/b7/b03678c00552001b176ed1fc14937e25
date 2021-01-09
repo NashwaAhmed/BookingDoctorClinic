@@ -1,0 +1,7 @@
+package com.bookingDoctorSystem.repository;
+
+
+
+public interface RoleRepository {
+
+}

@@ -1,0 +1,35 @@
+package com.bookingDoctorSystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bookingDoctorSystem.model.viewModel.PatientViewModel;
+import com.bookingDoctorSystem.service.DoctorService;
+import com.bookingDoctorSystem.service.PatientService;
+
+@RequestMapping("/patient")
+public class PatientController 
+{
+	    private PatientService patientService;
+
+	    private DoctorService doctorService;
+
+	    @Autowired
+	    public PatientController(PatientService patientService, DoctorService doctorService) {
+	        this.patientService = patientService;
+	        this.doctorService = doctorService;
+	    }
+	    
+	    @GetMapping("/patient/{id}")
+	    public String getPatient(@PathVariable long id, Model model) {
+	        PatientViewModel patientViewModel = this.patientService.getById(id);
+
+	        model.addAttribute("patientViewModel", patientViewModel);
+
+	        return "patient/patient";
+	    }
+
+}

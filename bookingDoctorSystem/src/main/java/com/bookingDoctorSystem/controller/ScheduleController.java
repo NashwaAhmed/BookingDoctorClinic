@@ -1,0 +1,89 @@
+package com.bookingDoctorSystem.controller;
+
+import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bookingDoctorSystem.entity.Doctor;
+import com.bookingDoctorSystem.entity.Patient;
+import com.bookingDoctorSystem.entity.User;
+import com.bookingDoctorSystem.model.validationModel.EditWeekScheduleModel;
+import com.bookingDoctorSystem.model.viewModel.DoctorSelectViewModel;
+import com.bookingDoctorSystem.service.DoctorService;
+import com.bookingDoctorSystem.service.PatientService;
+import com.bookingDoctorSystem.service.WeekScheduleService;
+
+@Controller
+@RequestMapping("/schedule")
+public class ScheduleController
+{
+	    private WeekScheduleService weekScheduleService;
+
+	    private DoctorService doctorService;
+
+	    private PatientService patientService;
+
+	    @Autowired
+	    public ScheduleController(WeekScheduleService weekScheduleService, DoctorService doctorService,
+	                              PatientService patientService) {
+	        this.weekScheduleService = weekScheduleService;
+	        this.doctorService = doctorService;
+	        this.patientService = patientService;
+	    }
+	    
+	    @PreAuthorize("hasRole('PATIENT') or hasRole('DOCTOR')")
+	    @GetMapping("/")
+	    public String getSchedule(Authentication principal, Model model, HttpServletRequest request) {
+	        long userId = ((User) principal.getPrincipal()).getId();
+	        if (request.isUserInRole("ROLE_DOCTOR")) {
+	            DoctorSelectViewModel doctor = this.doctorService.getModelByUserId(userId);
+	            model.addAttribute("doctor", doctor);
+	        } else if (request.isUserInRole("ROLE_PATIENT")) {
+	            Patient patient = this.patientService.getByUserId(userId);
+	            DoctorSelectViewModel doctor = this.doctorService.getModelByUserId(patient.getDoctor().getUser().getId());
+	            model.addAttribute("doctor", doctor);
+	        }
+
+	        return "schedule/schedule";
+	    }
+	    
+	    @GetMapping("/edit")
+	    public String getEditSchedule(Principal principal, Model model, HttpServletRequest request) {
+	        long weekScheduleId = getWeekScheduleId((Authentication) principal, request);
+	        EditWeekScheduleModel editWeekScheduleModel = this.weekScheduleService.getById(weekScheduleId);
+
+	        model.addAttribute("editWeekScheduleModel", editWeekScheduleModel);
+
+	        return "schedule/edit";
+	    }
+
+	    @GetMapping("/week")
+	    public ResponseEntity<EditWeekScheduleModel> getWeekSchedule(Principal principal, HttpServletRequest request) {
+	        long weekScheduleId = getWeekScheduleId((Authentication) principal, request);
+	        EditWeekScheduleModel editWeekScheduleModel = this.weekScheduleService.getById(weekScheduleId);
+
+	        return ResponseEntity.ok(editWeekScheduleModel);
+	    }
+	    private long getWeekScheduleId(Authentication principal, HttpServletRequest request) {
+	        long userId = ((User) principal.getPrincipal()).getId();
+	        if (request.isUserInRole("ROLE_DOCTOR")) {
+	            Doctor doctor = this.doctorService.getByUserId(userId);
+	            return doctor.getWeekSchedule().getId();
+	        } else if (request.isUserInRole("ROLE_PATIENT")) {
+	            Patient patient = this.patientService.getByUserId(userId);
+	            return patient.getDoctor().getWeekSchedule().getId();
+	        }
+
+	        return 0;
+	    }
+
+}

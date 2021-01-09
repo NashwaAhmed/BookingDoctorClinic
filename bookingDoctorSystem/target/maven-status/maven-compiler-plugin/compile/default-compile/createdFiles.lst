@@ -1,0 +1,14 @@
+com\bookingDoctorSystem\entity\Doctor.class
+com\bookingDoctorSystem\entity\Booking.class
+com\bookingDoctorSystem\entity\Role.class
+com\bookingDoctorSystem\entity\DoctorSpecialty.class
+com\bookingDoctorSystem\DoctorBookingSystemApplication.class
+com\bookingDoctorSystem\entity\Patient.class
+com\bookingDoctorSystem\entity\DaySchedule.class
+com\bookingDoctorSystem\entity\Hospital.class
+com\bookingDoctorSystem\entity\DayOfWeek.class
+com\bookingDoctorSystem\entity\WeekSchedule.class
+com\bookingDoctorSystem\entity\Clinic.class
+com\bookingDoctorSystem\entity\SettlePoint.class
+com\bookingDoctorSystem\entity\User.class
+com\bookingDoctorSystem\entity\Gender.class

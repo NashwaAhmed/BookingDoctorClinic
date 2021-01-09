@@ -1,0 +1,29 @@
+package com.bookingDoctorSystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.bookingDoctorSystem.error.Errors;
+import com.bookingDoctorSystem.service.UserService;
+
+@Controller
+public class UserController 
+{
+	private UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+    
+    @GetMapping("/login")
+    public String getLoginPage(@RequestParam(required = false) String error, Model model) {
+        if (error != null) {
+            model.addAttribute("error", Errors.INVALID_CREDENTIALS);
+        }
+
+        return "login";
+    }
+}

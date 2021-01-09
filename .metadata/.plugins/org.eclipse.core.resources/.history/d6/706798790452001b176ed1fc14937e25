@@ -1,0 +1,8 @@
+package com.bookingDoctorSystem.repository;
+
+
+
+public interface DoctorRepository 
+{
+
+}

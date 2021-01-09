@@ -1,0 +1,5 @@
+package com.bookingDoctorSystem.model.viewModel;
+
+public class BookingDateViewModel {
+
+}

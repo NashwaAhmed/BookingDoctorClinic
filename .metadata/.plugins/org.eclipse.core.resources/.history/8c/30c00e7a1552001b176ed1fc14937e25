@@ -1,0 +1,32 @@
+package com.bookingDoctorSystem.serviceImpl;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.bookingDoctorSystem.repository.UserRepository;
+import com.bookingDoctorSystem.service.RoleService;
+import com.bookingDoctorSystem.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService {
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private UserRepository userRepository;
+
+    private RoleService roleService;
+
+    private ModelMapper modelMapper;
+
+    @Autowired
+    public UserServiceImpl(BCryptPasswordEncoder bCryptPasswordEncoder,
+                           UserRepository userRepository,
+                           RoleService roleService,
+                           ModelMapper modelMapper) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.userRepository = userRepository;
+        this.roleService = roleService;
+        this.modelMapper = modelMapper;
+    }
+}

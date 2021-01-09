@@ -1,0 +1,22 @@
+package com.bookingDoctorSystem.serviceImpl;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bookingDoctorSystem.repository.SettlePointRepository;
+import com.bookingDoctorSystem.service.SettlePointService;
+
+@Service
+public class SettlePointServiceImpl implements SettlePointService {
+    private SettlePointRepository settlePointRepository;
+
+    private ModelMapper modelMapper;
+
+    @Autowired
+    public SettlePointServiceImpl(SettlePointRepository settlePointRepository, ModelMapper modelMapper) {
+        this.settlePointRepository = settlePointRepository;
+        this.modelMapper = modelMapper;
+    }
+
+}

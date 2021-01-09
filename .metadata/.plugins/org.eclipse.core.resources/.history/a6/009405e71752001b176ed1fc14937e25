@@ -1,0 +1,5 @@
+package com.bookingDoctorSystem.error;
+
+public class Errors {
+
+}

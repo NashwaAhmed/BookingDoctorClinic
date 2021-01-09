@@ -1,0 +1,109 @@
+package com.bookingDoctorSystem.serviceImpl;
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bookingDoctorSystem.entity.Doctor;
+import com.bookingDoctorSystem.entity.SettlePoint;
+import com.bookingDoctorSystem.entity.User;
+import com.bookingDoctorSystem.entity.WeekSchedule;
+import com.bookingDoctorSystem.model.validationModel.DoctorRegistrationModel;
+import com.bookingDoctorSystem.model.validationModel.EditDoctorModel;
+import com.bookingDoctorSystem.model.validationModel.UserRegistrationModel;
+import com.bookingDoctorSystem.model.viewModel.DoctorSelectViewModel;
+import com.bookingDoctorSystem.model.viewModel.DoctorViewModel;
+import com.bookingDoctorSystem.repository.DoctorRepository;
+import com.bookingDoctorSystem.service.DoctorService;
+import com.bookingDoctorSystem.service.SettlePointService;
+import com.bookingDoctorSystem.service.UserService;
+import com.bookingDoctorSystem.service.WeekScheduleService;
+
+@Service
+public class DoctorServiceImpl implements DoctorService {
+    private DoctorRepository doctorRepository;
+
+    private ModelMapper modelMapper;
+
+    private UserService userService;
+
+    private SettlePointService settlePointService;
+
+    private WeekScheduleService weekScheduleService;
+
+    @Autowired
+    public DoctorServiceImpl(DoctorRepository doctorRepository, ModelMapper modelMapper,
+                             UserService userService, SettlePointService settlePointService,
+                             WeekScheduleService weekScheduleService) {
+        this.doctorRepository = doctorRepository;
+        this.modelMapper = modelMapper;
+        this.userService = userService;
+        this.settlePointService = settlePointService;
+        this.weekScheduleService = weekScheduleService;
+    }
+
+    
+	@Override
+	public void create(DoctorRegistrationModel registrationModel) {
+		    User user = this.createDoctorUser(registrationModel);
+	        WeekSchedule weekSchedule = this.weekScheduleService.createDefault();
+
+	        Doctor doctor = this.modelMapper.map(registrationModel, Doctor.class);
+	        doctor.setUser(user);
+	        doctor.setWeekSchedule(weekSchedule);
+	        
+	        this.doctorRepository.saveAndFlush(doctor);
+		
+	}
+
+	@Override
+	public void save(EditDoctorModel editDoctorModel) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Doctor getById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DoctorViewModel getViewModelById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Doctor getByUserId(long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EditDoctorModel getEditModelByUserId(long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DoctorSelectViewModel getModelByUserId(long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<DoctorSelectViewModel> getAllSelect() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	 private User createDoctorUser(DoctorRegistrationModel registrationModel) {
+	        UserRegistrationModel userRegistrationModel = this.modelMapper.map(registrationModel, UserRegistrationModel.class);
+	        String DEFAULT_DOCTOR_ROLE = "ROLE_DOCTOR";
+	        userRegistrationModel.setAdditionalRole(DEFAULT_DOCTOR_ROLE);
+	        return this.userService.register(userRegistrationModel);
+	    }
+}

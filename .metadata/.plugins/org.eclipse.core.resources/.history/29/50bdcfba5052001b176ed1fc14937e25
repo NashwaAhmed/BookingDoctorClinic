@@ -1,0 +1,5 @@
+package com.bookingDoctorSystem.exception;
+
+public class InvalidBookingDateException {
+
+}

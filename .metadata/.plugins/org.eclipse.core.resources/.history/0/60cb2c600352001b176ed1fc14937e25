@@ -1,0 +1,9 @@
+package com.bookingDoctorSystem.repository;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface BookingRepository 
+{
+
+}

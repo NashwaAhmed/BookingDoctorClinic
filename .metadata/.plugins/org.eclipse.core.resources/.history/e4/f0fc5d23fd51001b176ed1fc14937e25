@@ -1,0 +1,6 @@
+package com.bookingDoctorSystem.Validation;
+
+public class IsPasswordsMatchingValidator
+{
+
+}

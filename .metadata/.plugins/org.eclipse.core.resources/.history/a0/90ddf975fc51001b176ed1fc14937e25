@@ -1,0 +1,12 @@
+package com.bookingDoctorSystem.Validation;
+
+import javax.validation.Payload;
+
+public @interface IsPasswordsMatching
+{
+	    String message() default "Passwords not matching";
+
+	    Class<?>[] groups() default {};
+
+	    Class<? extends Payload>[] payload() default {};
+}

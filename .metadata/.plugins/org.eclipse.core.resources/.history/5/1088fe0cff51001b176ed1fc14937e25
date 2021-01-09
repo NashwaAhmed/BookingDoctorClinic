@@ -1,0 +1,9 @@
+package com.bookingDoctorSystem.model.validationModel;
+
+import com.bookingDoctorSystem.Validation.IsPasswordsMatching;
+
+@IsPasswordsMatching
+public class ChangePasswordModel 
+{
+
+}

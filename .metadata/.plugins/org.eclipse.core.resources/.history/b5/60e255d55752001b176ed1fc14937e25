@@ -1,0 +1,5 @@
+package com.bookingDoctorSystem.controller;
+
+public class DoctorController {
+
+}

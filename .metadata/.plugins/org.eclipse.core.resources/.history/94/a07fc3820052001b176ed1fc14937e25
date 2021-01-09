@@ -1,0 +1,6 @@
+package com.bookingDoctorSystem.model.validationModel;
+
+public class EditDoctorModel 
+{
+
+}

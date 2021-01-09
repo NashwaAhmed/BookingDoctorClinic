@@ -1,0 +1,28 @@
+package com.bookingDoctorSystem.service;
+
+
+
+public interface DoctorService 
+{
+	 void create(DoctorRegistrationModel registrationModel);
+
+	    void save(EditDoctorModel editDoctorModel);
+
+	    void savePicture(EditDoctorPictureModel editDoctorPictureModel);
+
+	    Doctor getById(long id);
+
+	    DoctorViewModel getViewModelById(long id);
+
+	    EditDoctorPictureModel getPictureModelByUserId(long id);
+
+	    Doctor getByUserId(long userId);
+
+	    EditDoctorModel getEditModelByUserId(long userId);
+
+	    DoctorSelectViewModel getModelByUserId(long userId);
+
+	    List<DoctorSelectViewModel> getAllSelect();
+
+	    Page<DoctorViewModel> getAll(Pageable pageable);
+}

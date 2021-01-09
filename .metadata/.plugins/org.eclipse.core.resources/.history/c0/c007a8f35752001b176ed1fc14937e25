@@ -1,0 +1,9 @@
+package com.bookingDoctorSystem.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/doctor")
+public class DoctorController
+{
+
+}

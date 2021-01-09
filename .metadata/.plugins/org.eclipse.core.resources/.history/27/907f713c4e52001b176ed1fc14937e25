@@ -1,0 +1,40 @@
+package com.bookingDoctorSystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bookingDoctorSystem.service.BookingService;
+import com.bookingDoctorSystem.service.DoctorService;
+import com.bookingDoctorSystem.service.PatientService;
+
+@Controller
+@RequestMapping("/booking")
+public class BookingController
+{
+    private BookingService bookingService;
+    private DoctorService doctorService;
+    private PatientService patientService;
+
+    @Autowired
+    public BookingController(BookingService bookingService,
+                                 DoctorService doctorService, PatientService patientService) {
+        this.bookingService = bookingService;
+        this.doctorService = doctorService;
+        this.patientService = patientService;
+    }
+    
+    @GetMapping("/patient")
+    public String getPatientAppointmentHomePage(Authentication principal, Model model, @PageableDefault(size = 8) Pageable pageable) {
+        long userId = ((User) (principal).getPrincipal()).getId();
+        Patient patient = this.patientService.getByUserId(userId);
+        Page<AppointmentViewModel> appointmentViewModels = this.appointmentService.getAllForPatientById(patient.getId(), pageable);
+
+        model.addAttribute("appointmentViewModels", appointmentViewModels);
+
+        return "appointment/appointments";
+    }
+}

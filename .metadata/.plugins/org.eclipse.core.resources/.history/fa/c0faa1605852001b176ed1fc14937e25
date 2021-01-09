@@ -1,0 +1,24 @@
+package com.bookingDoctorSystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bookingDoctorSystem.service.DoctorService;
+import com.bookingDoctorSystem.service.SettlePointService;
+
+@RequestMapping("/doctor")
+public class DoctorController
+{
+	 private DoctorService doctorService;
+
+	    private SettlePointService settlePointService;
+	    
+
+	    @Autowired
+	    public DoctorController(DoctorService doctorService, SettlePointService settlePointService) {
+	        this.doctorService = doctorService;
+	        this.settlePointService = settlePointService;
+	    }
+
+
+}

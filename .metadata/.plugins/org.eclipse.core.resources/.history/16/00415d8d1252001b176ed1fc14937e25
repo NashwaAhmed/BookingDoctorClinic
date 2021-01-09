@@ -1,0 +1,79 @@
+package com.bookingDoctorSystem.serviceImpl;
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bookingDoctorSystem.entity.Patient;
+import com.bookingDoctorSystem.model.validationModel.EditPatientModel;
+import com.bookingDoctorSystem.model.validationModel.PatientRegistrationModel;
+import com.bookingDoctorSystem.model.viewModel.PatientBasicViewModel;
+import com.bookingDoctorSystem.model.viewModel.PatientViewModel;
+import com.bookingDoctorSystem.repository.PatientRepository;
+import com.bookingDoctorSystem.service.DoctorService;
+import com.bookingDoctorSystem.service.PatientService;
+import com.bookingDoctorSystem.service.UserService;
+
+@Service
+public class PatientServiceImpl implements PatientService {
+    private PatientRepository patientRepository;
+
+    private ModelMapper modelMapper;
+
+    private UserService userService;
+
+    private DoctorService doctorService;
+
+    @Autowired
+    public PatientServiceImpl(PatientRepository patientRepository, ModelMapper modelMapper,
+                              UserService userService, DoctorService doctorService) {
+        this.patientRepository = patientRepository;
+        this.modelMapper = modelMapper;
+        this.userService = userService;
+        this.doctorService = doctorService;
+    }
+
+	@Override
+	public void create(PatientRegistrationModel registrationModel) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void save(EditPatientModel editPatientModel) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public PatientViewModel getById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Patient getByUserId(long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EditPatientModel getEditModelByUserId(long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PatientBasicViewModel getBasicById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PatientBasicViewModel> getPatientsByDoctorId(long doctorId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

@@ -1,0 +1,9 @@
+package com.bookingDoctorSystem.repository;
+
+
+
+
+public interface SettlePointRepository 
+{
+
+}

@@ -1,0 +1,10 @@
+package com.bookingDoctorSystem.entity;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name = "Booking")
+public class Booking implements Serializable 
+{
+
+}

@@ -1,0 +1,29 @@
+package com.bookingDoctorSystem.serviceImpl;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bookingDoctorSystem.repository.PatientRepository;
+import com.bookingDoctorSystem.service.DoctorService;
+import com.bookingDoctorSystem.service.PatientService;
+import com.bookingDoctorSystem.service.UserService;
+
+@Service
+public class PatientServiceImpl implements PatientService {
+    private PatientRepository patientRepository;
+
+    private ModelMapper modelMapper;
+
+    private UserService userService;
+
+    private DoctorService doctorService;
+
+    @Autowired
+    public PatientServiceImpl(PatientRepository patientRepository, ModelMapper modelMapper,
+                              UserService userService, DoctorService doctorService) {
+        this.patientRepository = patientRepository;
+        this.modelMapper = modelMapper;
+        this.userService = userService;
+        this.doctorService = doctorService;
+    }

@@ -1,0 +1,10 @@
+package com.bookingDoctorSystem.model.validationModel;
+
+import com.bookingDoctorSystem.Validation.IsPasswordsMatching;
+import com.bookingDoctorSystem.Validation.PasswordConfirmable;
+
+@IsPasswordsMatching
+public class ChangePasswordModel implements PasswordConfirmable 
+{
+
+}

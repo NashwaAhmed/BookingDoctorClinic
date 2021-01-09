@@ -1,0 +1,12 @@
+package main.bookingDoctorSystem;
+
+
+
+@SpringBootApplication
+public class DoctorBookingSystemApplication 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+    }
+}

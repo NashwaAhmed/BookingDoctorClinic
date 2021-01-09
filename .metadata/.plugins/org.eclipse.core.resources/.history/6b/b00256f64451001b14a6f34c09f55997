@@ -1,0 +1,5 @@
+package com.bookingDoctorSystem.entity;
+
+public class WeekSchedule {
+
+}

@@ -1,0 +1,24 @@
+package com.bookingDoctorSystem.service;
+
+import java.util.List;
+
+import com.bookingDoctorSystem.model.validationModel.AddBookingModel;
+
+public interface BookingService 
+{
+	void save(AddBookingModel addAppointmentModel);
+
+    List<BookingDateViewModel> getAllForDateAndDoctor(Date date, long doctorId);
+
+    List<AppointmentViewModel> getAllForPatientById(long patientId);
+
+    Page<AppointmentViewModel> getAllForPatientById(long patientId, Pageable pageable);
+
+    List<AppointmentViewModel> getAllForDoctorById(long doctorId);
+
+    Page<AppointmentViewModel> getAllForDoctorById(long doctorId, Pageable pageable);
+
+    AppointmentViewModel getByDateAndDoctorId(Date date, long doctorId);
+
+    AppointmentViewModel getById(long id);
+}

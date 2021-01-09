@@ -1,0 +1,7 @@
+package com.bookingDoctorSystem.controller;
+
+@RequestMapping("/patient")
+public class PatientController 
+{
+
+}

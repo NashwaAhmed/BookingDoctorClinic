@@ -1,0 +1,57 @@
+package com.bookingDoctorSystem.serviceImpl;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.bookingDoctorSystem.entity.User;
+import com.bookingDoctorSystem.model.validationModel.ChangePasswordModel;
+import com.bookingDoctorSystem.model.validationModel.UserRegistrationModel;
+import com.bookingDoctorSystem.repository.UserRepository;
+import com.bookingDoctorSystem.service.RoleService;
+import com.bookingDoctorSystem.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService {
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private UserRepository userRepository;
+
+    private RoleService roleService;
+
+    private ModelMapper modelMapper;
+
+    @Autowired
+    public UserServiceImpl(BCryptPasswordEncoder bCryptPasswordEncoder,
+                           UserRepository userRepository,
+                           RoleService roleService,
+                           ModelMapper modelMapper) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.userRepository = userRepository;
+        this.roleService = roleService;
+        this.modelMapper = modelMapper;
+    }
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User register(UserRegistrationModel registrationModel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updatePassword(ChangePasswordModel changePasswordModel) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+    
+    
+}

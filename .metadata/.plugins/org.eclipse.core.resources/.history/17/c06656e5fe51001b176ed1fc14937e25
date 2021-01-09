@@ -1,0 +1,9 @@
+package com.bookingDoctorSystem.model.validationModel;
+
+
+
+@IsPasswordsMatching
+public class ChangePasswordModel 
+{
+
+}

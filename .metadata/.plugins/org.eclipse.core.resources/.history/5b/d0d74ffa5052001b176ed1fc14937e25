@@ -1,0 +1,6 @@
+package com.bookingDoctorSystem.exception;
+
+public class InvalidBookingDateException extends RuntimeException
+{
+
+}

@@ -1,0 +1,21 @@
+package com.bookingDoctorSystem.Validation;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+public class IsBGTelephoneMatchingValidator implements ConstraintValidator<BGTelephone, Object>
+{
+
+	@Override
+	public void initialize(BGTelephone constraintAnnotation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isValid(Object value, ConstraintValidatorContext context) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.bookingDoctorSystem.entity;
+
+@Entity
+@Table(name = "Booking")
+public class Booking 
+{
+
+}

@@ -1,0 +1,13 @@
+package com.bookingDoctorSystem.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.bookingDoctorSystem.entity.SettlePoint;
+
+@Repository
+public interface SettlePointRepository extends JpaRepository<SettlePoint, Long> {
+    List<SettlePoint> findAllByOrderByName();
+

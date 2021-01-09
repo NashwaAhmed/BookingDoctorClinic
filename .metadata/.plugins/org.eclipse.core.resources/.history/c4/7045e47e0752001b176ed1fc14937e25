@@ -1,0 +1,7 @@
+package com.bookingDoctorSystem.service;
+
+
+
+public interface DoctorService {
+
+}

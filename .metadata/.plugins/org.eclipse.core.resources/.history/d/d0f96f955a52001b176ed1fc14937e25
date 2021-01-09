@@ -1,0 +1,30 @@
+package com.bookingDoctorSystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.bookingDoctorSystem.service.DoctorService;
+import com.bookingDoctorSystem.service.PatientService;
+import com.bookingDoctorSystem.service.WeekScheduleService;
+
+@Controller
+@RequestMapping("/schedule")
+public class ScheduleController
+{
+	    private WeekScheduleService weekScheduleService;
+
+	    private DoctorService doctorService;
+
+	    private PatientService patientService;
+
+	    @Autowired
+	    public ScheduleController(WeekScheduleService weekScheduleService, DoctorService doctorService,
+	                              PatientService patientService) {
+	        this.weekScheduleService = weekScheduleService;
+	        this.doctorService = doctorService;
+	        this.patientService = patientService;
+	    }
+
+
+}
