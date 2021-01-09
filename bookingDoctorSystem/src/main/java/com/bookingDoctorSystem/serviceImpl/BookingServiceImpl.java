@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bookingDoctorSystem.entity.Booking;
 import com.bookingDoctorSystem.exception.BookingNotFoundException;
@@ -18,6 +19,7 @@ import com.bookingDoctorSystem.model.viewModel.PatientBasicViewModel;
 import com.bookingDoctorSystem.repository.BookingRepository;
 import com.bookingDoctorSystem.service.BookingService;
 
+@Service
 public class BookingServiceImpl implements BookingService
 {
 
