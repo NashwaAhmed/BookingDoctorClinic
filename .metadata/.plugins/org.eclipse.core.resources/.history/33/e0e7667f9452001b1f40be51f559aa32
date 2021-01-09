@@ -1,0 +1,5 @@
+package com.bookingDoctorSystem.config;
+
+public class SpringSecurityConfig {
+
+}
